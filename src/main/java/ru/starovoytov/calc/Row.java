@@ -69,6 +69,6 @@ public class Row {
 
 	@Override
 	public String toString() {
-		return "Row{" + "rowNum=" + rowNum + ", mainPay=" + mainPay + ", ratePay=" + ratePay + ", mainAmount=" + mainAmount + ", fullPay=" + fullPay + '}';
+		return "Row{" + "rowNum=" + rowNum + ", mainPay=" + mainPay + ", ratePay=" + ratePay + ", mainAmount=" + mainAmount + ", fullPay=" + fullPay + ", month=" + month + ", year=" + year + '}';
 	}
 }

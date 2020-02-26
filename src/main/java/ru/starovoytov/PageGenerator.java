@@ -24,21 +24,33 @@ import java.util.Map;
  */
 public class PageGenerator {
 	private static String TEMP_DIR = System.getProperty("user.home") + File.separator + ".stepicJavaWebServices1Temp" + File.separator;
-	private static PageGenerator pageGenerator;
+	private static final PageGenerator PAGE_GENERATOR = new PageGenerator();
 	private final Configuration cfg;
 
-	private PageGenerator() throws IOException {
+	/**
+	 * private-конструктор
+	 */
+	private PageGenerator() {
 		cfg = new Configuration();
 		cfg.setTemplateLoader(new TempFileTemplateLoader());
 	}
 
-	public static PageGenerator instance() throws IOException {
-		if (pageGenerator == null) {
-			pageGenerator = new PageGenerator();
-		}
-		return pageGenerator;
+	/**
+	 * Получить инстанс генератора
+	 *
+	 * @return
+	 */
+	public static PageGenerator instance() {
+		return PAGE_GENERATOR;
 	}
 
+	/**
+	 * Получение страницы из шаблона
+	 *
+	 * @param filename путь к шаблону
+	 * @param data     параметры
+	 * @return сформированная страница
+	 */
 	public String getPage(String filename, Map<String, Object> data) {
 		Writer stream = new StringWriter();
 		try {
@@ -50,6 +62,9 @@ public class PageGenerator {
 		return stream.toString();
 	}
 
+	/**
+	 * Реализация загрузчика шаблонов
+	 */
 	private class TempFileTemplateLoader implements TemplateLoader {
 		@Override
 		public Object findTemplateSource(String name) throws IOException {

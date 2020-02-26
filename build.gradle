@@ -26,7 +26,6 @@ jar {
 		attributes "Main-Class": mainClassName
 		attributes "Implementation-Version": 0.1
 		attributes "Implementation-Title": project.name
-		attributes "Application-Class": 'ru.everestcollect.weblog.MainHelper'
 	}
 
 	from {

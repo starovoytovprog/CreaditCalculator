@@ -53,6 +53,11 @@ public class Calculator {
 		return paySum;
 	}
 
+	/**
+	 * Сформировать график платежей
+	 *
+	 * @return график платежей
+	 */
 	public List<Row> getPaySchedule() {
 		List<Row> schedule = new ArrayList<>();
 
