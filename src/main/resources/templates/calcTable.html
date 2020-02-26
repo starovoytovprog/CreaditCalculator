@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Table</title>
+</head>
+<body>
+
+
+<ul>
+	<table border="true">
+		<tr>
+			<td>Pay number</td>
+			<td>Month/year</td>
+			<td>Main amount pay</td>
+			<td>Rate pay</td>
+			<td>Main amount</td>
+			<td>Full pay</td>
+		</tr>
+		<#list rows as item>
+		<tr>
+			<td>${item.rowNum}</td>
+			<td>${item.month}/${item.year}</td>
+			<td>${item.mainPay}</td>
+			<td>${item.ratePay}</td>
+			<td>${item.mainAmount}</td>
+			<td>${item.fullPay}</td>
+		</tr>
+	</#list>
+	</table>
+</ul>
+
+
+</body>
+</html>
