@@ -39,7 +39,7 @@ public class Calculator {
 
 	private BigDecimal calculatePaySum() {
 		BigDecimal bigRate = new BigDecimal(rate).divide(new BigDecimal(100, MathContext.UNLIMITED), MathContext.UNLIMITED);
-		p = bigRate.divide(new BigDecimal(12, MathContext.UNLIMITED), MathContext.UNLIMITED);
+		p = bigRate.divide(new BigDecimal(12, MathContext.UNLIMITED), 50, BigDecimal.ROUND_HALF_UP);
 
 		return p.divide(p.add(BigDecimal.ONE, MathContext.UNLIMITED)
 			                .pow(monthCount, MathContext.UNLIMITED)

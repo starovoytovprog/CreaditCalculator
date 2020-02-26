@@ -27,10 +27,10 @@ public class Row {
 	public Row(int rowNum, BigDecimal mainPay, BigDecimal ratePay, BigDecimal mainAmount,
 		BigDecimal fullPay) {
 		this.rowNum = rowNum;
-		this.mainPay = mainPay;
-		this.ratePay = ratePay;
-		this.mainAmount = mainAmount;
-		this.fullPay = fullPay;
+		this.mainPay = mainPay.setScale(2, BigDecimal.ROUND_HALF_UP);
+		this.ratePay = ratePay.setScale(2, BigDecimal.ROUND_HALF_UP);
+		this.mainAmount = mainAmount.setScale(2, BigDecimal.ROUND_HALF_UP);
+		this.fullPay = fullPay.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
 	public int getRowNum() {
