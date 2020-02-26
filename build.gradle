@@ -1,0 +1,36 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'application'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+buildscript {
+	repositories {
+		maven {
+			url 'https://plugins.gradle.org/m2/'
+		}
+	}
+}
+
+mainClassName = 'ru.starovoytov.MainClass'
+
+jar {
+	archiveBaseName = 'CreditCalculator'
+
+	manifest {
+		attributes "Main-Class": mainClassName
+		attributes "Implementation-Version": 0.1
+		attributes "Implementation-Title": project.name
+		attributes "Application-Class": 'ru.everestcollect.weblog.MainHelper'
+	}
+
+	from {
+		configurations.compile.collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+		configurations.runtime.collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+	}
+}
