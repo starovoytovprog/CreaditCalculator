@@ -1,6 +1,7 @@
 package ru.starovoytov.servlets;
 
 import ru.starovoytov.PageGenerator;
+import ru.starovoytov.calc.Calculator;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,9 +22,11 @@ public class CreditTableServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request,
 		HttpServletResponse response) throws IOException {
 
-		String amount = request.getParameter("amount");
-		String count = request.getParameter("count");
-		String rate = request.getParameter("rate");
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		int count = Integer.parseInt(request.getParameter("count"));
+		double rate = Double.parseDouble(request.getParameter("rate"));
+
+		Calculator calculator = new Calculator(amount, count, rate);
 
 		response.getWriter()
 			.println(PageGenerator.instance().getPage(TABLE_PAGE, new HashMap<>()));
