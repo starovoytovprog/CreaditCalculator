@@ -14,6 +14,8 @@ public class Row {
 	private final BigDecimal ratePay;
 	private final BigDecimal mainAmount;
 	private final BigDecimal fullPay;
+	private final int month;
+	private final int year;
 
 	/**
 	 * Конструктор
@@ -23,14 +25,18 @@ public class Row {
 	 * @param ratePay    платёж по процентам
 	 * @param mainAmount остаток основного долга
 	 * @param fullPay    общая сумма платежа
+	 * @param month      месяц платежа
+	 * @param year       год платежа
 	 */
 	public Row(int rowNum, BigDecimal mainPay, BigDecimal ratePay, BigDecimal mainAmount,
-		BigDecimal fullPay) {
+		BigDecimal fullPay, int month, int year) {
 		this.rowNum = rowNum;
 		this.mainPay = mainPay.setScale(2, BigDecimal.ROUND_HALF_UP);
 		this.ratePay = ratePay.setScale(2, BigDecimal.ROUND_HALF_UP);
 		this.mainAmount = mainAmount.setScale(2, BigDecimal.ROUND_HALF_UP);
 		this.fullPay = fullPay.setScale(2, BigDecimal.ROUND_HALF_UP);
+		this.month = month + 1;
+		this.year = year;
 	}
 
 	public int getRowNum() {
@@ -51,6 +57,14 @@ public class Row {
 
 	public BigDecimal getFullPay() {
 		return fullPay;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public int getYear() {
+		return year;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package ru.starovoytov.calc;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -56,12 +57,15 @@ public class Calculator {
 		List<Row> schedule = new ArrayList<>();
 
 		BigDecimal currentAmount = new BigDecimal(amount);
+		Calendar calendar = Calendar.getInstance();
 
 		for (int i = 0; i < monthCount; i++) {
+			calendar.add(Calendar.MONTH, 1);
 			BigDecimal currentPayRate = currentAmount.multiply(p, MathContext.UNLIMITED);
 			BigDecimal currentPayAmount = paySum.subtract(currentPayRate, MathContext.UNLIMITED);
 			currentAmount = currentAmount.subtract(currentPayAmount, MathContext.UNLIMITED);
-			schedule.add(new Row(i + 1, currentPayAmount, currentPayRate, currentAmount, paySum));
+			schedule.add(new Row(i + 1, currentPayAmount, currentPayRate, currentAmount, paySum, calendar
+				.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
 		}
 
 		return schedule;
