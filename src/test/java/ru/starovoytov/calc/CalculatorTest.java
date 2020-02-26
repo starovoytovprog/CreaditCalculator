@@ -3,6 +3,7 @@ package ru.starovoytov.calc;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,6 +30,12 @@ public class CalculatorTest {
 	@Test
 	public void calcSimpleTest2() {
 		Calculator calculator = new Calculator(250_000, 24, 15.0);
-		assertEquals(0, new BigDecimal(12_500).compareTo(calculator.getPaySum()));
+
+		List<Row> rows = calculator.getPaySchedule();
+
+		for (Row row : rows) {
+			assertEquals(0, row.getFullPay()
+				.compareTo(row.getMainPay().add(row.getRatePay())));
+		}
 	}
 }
